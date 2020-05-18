@@ -8,16 +8,19 @@ class TodosController < ApplicationController
     end
     def create
         @todo = Todo.create todo_params
+        flash[:notice] = "Todo '#{@todo.title}' created successfully.........."
         redirect_to todos_path,  notice: 'Todo was successfully Created.'
     end
     def edit
     end
     def update
         @todo.update todo_params
+        flash[:notice] = "Todo Updated successfully.........."
         redirect_to todo_path, notice: 'Todo was successfully updated.'
     end
     def destroy
         Todo.find(params[:id]).destroy
+        flash[:notice] = "Todo created successfully.........."
         redirect_to todos_path, notice: 'Todo was successfully Deleted.'
     end
     private
