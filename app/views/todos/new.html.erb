@@ -1,0 +1,16 @@
+<%= form_for @todo do |f| %>
+
+  <%= label_tag(:title) %>
+  <%= f.text_field :title %>
+
+  <%= label_tag(:description) %> 
+  <%= f.text_area :description %>
+
+  <%= label_tag(:priorities) %> 
+  <%= f.text_area :priorities %>
+
+  <%= label_tag(:due_date) %> 
+  <%= f.date_field :due_date %>
+  
+  <%= f.submit "Create" %>
+<% end %>

@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Created At</th>
+        <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <%- @todos.order(priorities: :asc).each do |todo| -%>
+      <tr>
+        <td><%= todo.title %></td>
+        <td><%= todo.description %></td>
+        <td><%= todo.priorities %></td>
+        <td><%= todo.created_at %></td>
+        <td><%= todo.due_date %></td>
+        <td> <%= link_to "edit", edit_todo_path(todo[:id]) %></td>
+        <td><%= link_to "delete", todo, method: :delete, data: { confirm: "You sure?" }%></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>

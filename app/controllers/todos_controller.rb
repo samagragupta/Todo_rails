@@ -1,0 +1,31 @@
+class TodosController < ApplicationController
+    before_action :set_user, only: [:edit, :update]
+    def index
+        @todos = Todo.all
+    end
+    def new
+        @todo = Todo.new
+    end
+    def create
+        @todo = Todo.create todo_params
+        redirect_to todos_path,  notice: 'Todo was successfully Created.'
+    end
+    def edit
+    end
+    def update
+        @todo.update todo_params
+        redirect_to todo_path, notice: 'Todo was successfully updated.'
+    end
+    def destroy
+        Todo.find(params[:id]).destroy
+        redirect_to todos_path, notice: 'Todo was successfully Deleted.'
+    end
+    private
+        def set_user
+            @todo = Todo.find(params[:id])
+        end
+
+        def todo_params
+            params.require(:todo).permit(:title, :description, :due_date, :priorities)
+        end
+end
