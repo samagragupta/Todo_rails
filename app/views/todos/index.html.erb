@@ -15,7 +15,7 @@
   </thead>
   <tbody>
   
-    <%- @todos.order(priorities: :asc).each do |todo| -%>
+    <%- @todos.each do |todo| -%>
       <tr>
         <td><%= todo.title %></td>
         <td><%= todo.description %></td>

@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
-    before_action :set_user, only: [:edit, :update]
+    before_action :find_user, only: [:edit, :update]
     def index
-        @todos = Todo.all
+        @todos = Todo.order(priorities: :asc)
     end
     def new
         @todo = Todo.new
@@ -24,7 +24,7 @@ class TodosController < ApplicationController
         redirect_to todos_path, notice: 'Todo was successfully Deleted.'
     end
     private
-        def set_user
+        def find_user
             @todo = Todo.find(params[:id])
         end
 
